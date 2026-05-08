@@ -1,64 +1,99 @@
-# Service Boundary của nhóm
+# Service Boundary Diagram - Product A: Analytics
 
-## 1. Thông tin nhóm
+Mục tiêu hệ thống: thu thập dữ liệu từ nhiều nguồn, xử lý, tổng hợp, phân tích và cung cấp báo cáo trực quan để hỗ trợ ra quyết định.
 
-- Tên nhóm:
-- Lớp:
-- Thành viên:
-- Service nhóm phụ trách:
-- Sản phẩm tổng thể của lớp:
+## 1. Actor
 
-## 2. Actor
+- Admin / Manager: xem dashboard, báo cáo và quản lý hệ thống.
+- Data Analyst: truy vấn dữ liệu, phân tích và xuất báo cáo.
+- Web / Application: gửi dữ liệu sự kiện, log hành vi người dùng.
+- Mobile App: gửi dữ liệu sự kiện, log hành vi người dùng.
+- External Systems: CRM, ERP, IoT và các hệ thống bên ngoài.
 
-Ai tương tác với hệ thống/service?
+## 2. System Boundary
 
-## 3. System Boundary
+Phần nhóm kiểm soát nằm trong khối Analytics System:
 
-Nhóm em xây phần nào?
+- API Gateway
+- Data Ingestion Service
+- Data Processing Service
+- Analytics Service
+- Dashboard / Visualization
+- User Service
+- Security & Authorization
 
-Phần nhóm kiểm soát:
+Phần nhóm chỉ tích hợp bên ngoài biên hệ thống:
 
-- ...
+- Nguồn dữ liệu từ web/app/hệ thống khác
+- Cơ sở hạ tầng cloud
+- Dịch vụ lưu trữ, queue, cache, monitoring
+- Hệ thống CI/CD và triển khai
 
-Phần nhóm chỉ tích hợp:
+## 3. Service Boundary
 
-- ...
+Service của nhóm chịu trách nhiệm:
 
-## 4. Service Boundary
+- Nhận dữ liệu từ nhiều nguồn qua API Gateway.
+- Kiểm tra, chuẩn hóa và đưa dữ liệu vào pipeline xử lý.
+- Thực hiện ETL/ELT, batch processing và stream processing.
+- Tính toán KPI, metrics, aggregation và business logic phân tích.
+- Cung cấp dashboard, biểu đồ và xuất báo cáo.
+- Quản lý người dùng, vai trò và phân quyền truy cập.
 
-Service của nhóm có trách nhiệm gì?
+Service KHÔNG làm:
 
-Service KHÔNG làm gì?
+- Không sở hữu trực tiếp nguồn dữ liệu bên ngoài.
+- Không thay thế hoàn toàn các hệ thống CRM/ERP/IoT.
+- Không tự vận hành hạ tầng cloud hay container runtime.
+- Không xử lý yêu cầu ngoài phạm vi API và quyền truy cập đã định nghĩa.
 
-## 5. Input / Output
+## 4. Input / Output
 
 ### Input
 
-- ...
+- Dữ liệu sự kiện từ web/app/mobile.
+- Dữ liệu từ external systems qua tích hợp.
+- Yêu cầu truy vấn, xem dashboard, xuất báo cáo.
+- Thông tin xác thực và phân quyền người dùng.
 
 ### Output
 
-- ...
+- Dữ liệu đã làm sạch và chuẩn hóa.
+- Chỉ số KPI, metric, aggregation.
+- Dashboard, biểu đồ và báo cáo xuất file.
+- Phản hồi API cho các dịch vụ tích hợp.
 
-## 6. API dự kiến
+## 5. API dự kiến
 
 | Method | Endpoint | Mục đích |
 |---|---|---|
 | GET | /health | Kiểm tra service |
-| POST | ... | ... |
+| POST | /ingest | Nhận dữ liệu đầu vào |
+| GET | /analytics/summary | Lấy số liệu tổng hợp |
+| GET | /dashboard | Xem dashboard |
+| POST | /auth/login | Xác thực người dùng |
 
-## 7. Phụ thuộc service khác
+## 6. Phụ thuộc service khác
 
-Service này gọi đến service nào?
+- Gọi đến Database PostgreSQL/MongoDB để lưu trữ dữ liệu.
+- Gọi Cache Redis cho dữ liệu truy xuất nhanh.
+- Gọi Queue Kafka/RabbitMQ cho xử lý bất đồng bộ.
+- Có thể gọi Object Storage như AWS S3 hoặc GCP Cloud Storage.
+- Tích hợp Monitoring & Logging bằng Prometheus, Grafana hoặc ELK.
 
-Service nào gọi đến service này?
+Các service khác có thể gọi vào hệ thống qua API Gateway để gửi dữ liệu hoặc truy vấn kết quả.
 
-## 8. Sơ đồ minh họa
+## 7. Công nghệ nền tảng
 
-Có thể vẽ bằng Mermaid, draw.io, Ludichart hoặc ảnh chụp sơ đồ.
+- Backend: Node.js hoặc Python/FastAPI.
+- Database: PostgreSQL hoặc MongoDB.
+- Data Warehouse: BigQuery hoặc Redshift.
+- Cache: Redis.
+- Queue / Streaming: Kafka hoặc RabbitMQ.
+- Container: Docker.
+- Authentication: JWT hoặc OAuth 2.0.
+- CI/CD: GitLab CI hoặc GitHub Actions.
 
-```mermaid
-flowchart LR
-    User[Actor] --> Service[Service của nhóm]
-    Service --> DB[(Database)]
-    Service --> Other[Service khác]
+## 8. Ghi chú minh họa
+
+Ảnh minh họa trong bộ minh chứng nên được lưu riêng ở `evidence/buoi-01/` để dễ đối chiếu với phần mô tả boundary.
