@@ -2,7 +2,7 @@
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm: CNTT 17-08 Nhóm 05
+- Tên nhóm: Nhóm A5
 - Lớp: FIT 4110
 - Thành viên: Phạm Đình Minh Trưởng - 1771020705
 - Service nhóm phụ trách: Analytics
