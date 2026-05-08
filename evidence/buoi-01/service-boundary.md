@@ -1,8 +1,16 @@
 # Service Boundary Diagram - Product A: Analytics
 
+## 1. Thông tin nhóm
+
+- Tên nhóm: CNTT 17-08 Nhóm 05
+- Lớp: FIT 4110
+- Thành viên: Phạm Đình Minh Trưởng - 1771020705
+- Service nhóm phụ trách: Analytics
+- Sản phẩm tổng thể của lớp: Hệ thống dịch vụ tổng hợp và phân tích dữ liệu
+
 Mục tiêu hệ thống: thu thập dữ liệu từ nhiều nguồn, xử lý, tổng hợp, phân tích và cung cấp báo cáo trực quan để hỗ trợ ra quyết định.
 
-## 1. Actor
+## 2. Actor
 
 - Admin / Manager: xem dashboard, báo cáo và quản lý hệ thống.
 - Data Analyst: truy vấn dữ liệu, phân tích và xuất báo cáo.
@@ -10,7 +18,7 @@ Mục tiêu hệ thống: thu thập dữ liệu từ nhiều nguồn, xử lý,
 - Mobile App: gửi dữ liệu sự kiện, log hành vi người dùng.
 - External Systems: CRM, ERP, IoT và các hệ thống bên ngoài.
 
-## 2. System Boundary
+## 3. System Boundary
 
 Phần nhóm kiểm soát nằm trong khối Analytics System:
 
@@ -29,7 +37,7 @@ Phần nhóm chỉ tích hợp bên ngoài biên hệ thống:
 - Dịch vụ lưu trữ, queue, cache, monitoring
 - Hệ thống CI/CD và triển khai
 
-## 3. Service Boundary
+## 4. Service Boundary
 
 Service của nhóm chịu trách nhiệm:
 
@@ -47,7 +55,7 @@ Service KHÔNG làm:
 - Không tự vận hành hạ tầng cloud hay container runtime.
 - Không xử lý yêu cầu ngoài phạm vi API và quyền truy cập đã định nghĩa.
 
-## 4. Input / Output
+## 5. Input / Output
 
 ### Input
 
@@ -63,7 +71,7 @@ Service KHÔNG làm:
 - Dashboard, biểu đồ và báo cáo xuất file.
 - Phản hồi API cho các dịch vụ tích hợp.
 
-## 5. API dự kiến
+## 6. API dự kiến
 
 | Method | Endpoint | Mục đích |
 |---|---|---|
@@ -73,7 +81,7 @@ Service KHÔNG làm:
 | GET | /dashboard | Xem dashboard |
 | POST | /auth/login | Xác thực người dùng |
 
-## 6. Phụ thuộc service khác
+## 7. Phụ thuộc service khác
 
 - Gọi đến Database PostgreSQL/MongoDB để lưu trữ dữ liệu.
 - Gọi Cache Redis cho dữ liệu truy xuất nhanh.
@@ -83,7 +91,7 @@ Service KHÔNG làm:
 
 Các service khác có thể gọi vào hệ thống qua API Gateway để gửi dữ liệu hoặc truy vấn kết quả.
 
-## 7. Công nghệ nền tảng
+## 8. Công nghệ nền tảng
 
 - Backend: Node.js hoặc Python/FastAPI.
 - Database: PostgreSQL hoặc MongoDB.
@@ -94,6 +102,6 @@ Các service khác có thể gọi vào hệ thống qua API Gateway để gửi
 - Authentication: JWT hoặc OAuth 2.0.
 - CI/CD: GitLab CI hoặc GitHub Actions.
 
-## 8. Ghi chú minh họa
+## 9. Ghi chú minh họa
 
 Ảnh minh họa trong bộ minh chứng nên được lưu riêng ở `evidence/buoi-01/` để dễ đối chiếu với phần mô tả boundary.
