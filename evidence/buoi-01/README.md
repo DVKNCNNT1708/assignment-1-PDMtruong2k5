@@ -6,7 +6,7 @@ Thư mục này dùng để nộp minh chứng thiết lập môi trường lab.
 
 - Họ tên:Phạm Đình Minh Trưởng
 - Mã sinh viên:1771020705
-- Nhóm:A5
+- Nhóm:05
 - Vai trò dự kiến trong nhóm: Phân tích yêu cầu, chuẩn bị minh chứng và kiểm tra môi trường lab
 - Hệ điều hành:Windows
 - Ghi chú: Đã ghi minh chứng trong `evidence/buoi-01/`, gồm ảnh Docker, ảnh Compose, log smoke test và tài liệu service boundary.
