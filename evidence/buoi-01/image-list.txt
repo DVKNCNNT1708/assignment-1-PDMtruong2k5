@@ -1,0 +1,8 @@
+REPOSITORY:TAG                    IMAGE ID       SIZE
+redis:7-alpine                    9de71018be84   57.8MB
+nginx:alpine                      5616878291a2   93.5MB
+hello-world:latest                f9078146db2e   25.9kB
+postgres:15                       c635fa3e3b74   633MB
+pdmtruong2k5/pcm-backend:latest   5e107b6a0dbb   372MB
+registry:2                        a3d8aaa63ed8   37.4MB
+postgres:10-alpine                63cfb6eac6b3   117MB
